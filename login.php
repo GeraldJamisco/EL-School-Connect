@@ -1,4 +1,8 @@
-<?php require_once('header.php'); ?>
+<?php 
+
+require_once('header.php'); 
+
+?>
 <!-- fetching row banner login -->
 <?php
 $statement = $pdo->prepare("SELECT * FROM tbl_settings WHERE id=1");
@@ -10,42 +14,6 @@ foreach ($result as $row) {
 ?>
 <!-- login form -->
 <?php
-if(isset($_POST['form1'])) {
-        
-    if(empty($_POST['cust_email']) || empty($_POST['cust_password'])) {
-        $error_message = LANG_VALUE_132.'<br>';
-    } else {
-        
-        $cust_email = strip_tags($_POST['cust_email']);
-        $cust_password = strip_tags($_POST['cust_password']);
-
-        $statement = $pdo->prepare("SELECT * FROM tbl_customer WHERE cust_email=?");
-        $statement->execute(array($cust_email));
-        $total = $statement->rowCount();
-        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-        foreach($result as $row) {
-            $cust_status = $row['cust_status'];
-            $row_password = $row['cust_password'];
-        }
-
-        if($total==0) {
-            $error_message .= LANG_VALUE_133.'<br>';
-        } else {
-            //using MD5 form
-            if( $row_password != md5($cust_password) ) {
-                $error_message .= LANG_VALUE_139.'<br>';
-            } else {
-                if($cust_status == 0) {
-                    $error_message .= LANG_VALUE_148.'<br>';
-                } else {
-                    $_SESSION['customer'] = $row;
-                    header("location: ".BASE_URL."dashboard.php");
-                }
-            }
-            
-        }
-    }
-}
 ?>
 
 <div class="page-banner" style="background-color:#444;background-image: url(assets/uploads/<?php echo $banner_login; ?>);">
@@ -61,7 +29,7 @@ if(isset($_POST['form1'])) {
                 <div class="user-content">
 
                     
-                    <form action="" method="post">
+                    <form action="login_Config.php" method="post">
                         <?php $csrf->echoInputField(); ?>                  
                         <div class="row">
                             <div class="col-md-4"></div>

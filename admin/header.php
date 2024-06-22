@@ -66,7 +66,8 @@ if(!isset($_SESSION['user'])) {
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 								<img src="../assets/uploads/<?php echo $_SESSION['user']['photo']; ?>" class="user-image" alt="User Image">
 								<span class="hidden-xs"><?php echo $_SESSION['user']['full_name']; ?></span>
-								<span class="hidden-xs"><?php $elschooluserid = $_SESSION['user']['id']; ?></span>
+								<span class="hidden-xs"><?php $elschooluserid = $_SESSION['user']['id']; ?></span> 
+							<!-- <?php	echo $elschooluserid;?> -->
 							</a>
 							<ul class="dropdown-menu">
 								<li class="user-footer">

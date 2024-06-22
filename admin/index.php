@@ -6,7 +6,7 @@
 
 <?php
 
-$statement = $pdo->prepare("SELECT * FROM tbl_product");
+$statement = $pdo->prepare("SELECT * FROM tbl_product WHERE user_id = '$elschooluserid'");
 $statement->execute();
 $total_product = $statement->rowCount();
 

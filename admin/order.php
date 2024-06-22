@@ -70,7 +70,7 @@ Payment Id: '.$row['payment_id'].'<br>
         }
 
         $i=0;
-        $statement = $pdo->prepare("SELECT * FROM tbl_order WHERE payment_id=?");
+        $statement = $pdo->prepare("SELECT * FROM tbl_order WHERE payment_id=? AND seller_id=0");
         $statement->execute(array($_POST['payment_id']));
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);                            
         foreach ($result as $row) {

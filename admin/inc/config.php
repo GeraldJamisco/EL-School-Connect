@@ -18,7 +18,7 @@ $dbuser = 'root';
 $dbpass = '';
 
 // Defining base url
-define("BASE_URL", "");
+define("BASE_URL", "https://elschoolconnect.com");
 
 // Getting Admin url
 define("ADMIN_URL", BASE_URL . "admin" . "/");

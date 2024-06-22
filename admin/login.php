@@ -15,12 +15,18 @@ if(isset($_POST['form1'])) {
 		
 		$email = strip_tags($_POST['email']);
 		$password = strip_tags($_POST['password']);
-
+		$validity = $pdo->prepare("SELECT * FROM tbl_user WHERE email=? AND status=?");
+		$validity->execute(array($email, 'Not Active'));
+		$validityTotal = $validity->rowCount();
+		$validityResult = $validity->fetchAll(PDO::FETCH_ASSOC);
+		if ($validityTotal == 1) {
+			$error_message .= 'Please Check your email address and verify your account to continue, thank you. <br>';
+		}
     	$statement = $pdo->prepare("SELECT * FROM tbl_user WHERE email=? AND status=?");
     	$statement->execute(array($email,'Active'));
-    	$total = $statement->rowCount();    
-        $result = $statement->fetchAll(PDO::FETCH_ASSOC);    
-        if($total==0) {
+    	$total = $statement->rowCount();
+		$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+		if ($total == 0) {
             $error_message .= 'Email Address does not match<br>';
         } else {       
             foreach($result as $row) { 
