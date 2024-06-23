@@ -1,5 +1,13 @@
 <?php
-include 'header.php';
+include("inc/config.php");
+include("inc/functions.php");
+include("inc/CSRF_Protect.php");
+$csrf = new CSRF_Protect();
+$error_message = '';
+$success_message = '';
+$error_message1 = '';
+$success_message1 = '';
+
 // session_start(); // Ensure sessions are started
 
 if (isset($_POST['form_add_to_cart'])) {
@@ -103,6 +111,6 @@ if($error_message1 != '') {
 }
 if($success_message1 != '') {
     echo "<script>alert('".$success_message1."')</script>";
-    header('location: product.php?id='.$_REQUEST['id']);
+    header('Location: product.php?id='.$_REQUEST['id']);
 }
 ?>
