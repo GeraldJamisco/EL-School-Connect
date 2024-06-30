@@ -40,16 +40,16 @@ if(isset($_POST['form1'])) {
 }
 
 
-if ($error_message != '') {
-    echo "<script type='text/javascript'>
-            alert('".$error_message."');
-            window.location.href = 'login.php';
-          </script>";
-    exit;
-}else {
-    # code for making user go straight to the dashboard
-    echo "window.location.href = 'dashboard.php";
-}
+// if ($error_message != '') {
+//     echo "<script type='text/javascript'>
+//             alert('".$error_message."');
+//             window.location.href = 'login.php';
+//           </script>";
+//     exit;
+// }else {
+//     # code for making user go straight to the dashboard
+//    header("Location: dashboard.php");   
+// }
 
 // if($success_message1 != '') {
 //     echo "<script>alert('".$success_message1."')</script>";
